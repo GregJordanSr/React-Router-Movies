@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
@@ -22,7 +23,18 @@ export default class App extends Component {
     return (
       <div>
         <SavedList list={this.state.savedList} />
-        <div>Replace this Div with your Routes</div>
+        <Route exact path="/" component={MovieList} />
+
+        {/* // This path determines the path used on line 13 in the section
+        
+        componentDidMount() {
+        // change this line to grab the id passed on the URL
+        --> const id = this.props.match.params.id; <--
+        this.fetchMovie(id);
+  }   
+         */}
+
+        <Route path="/movie/:id" component={Movie} />
       </div>
     );
   }
